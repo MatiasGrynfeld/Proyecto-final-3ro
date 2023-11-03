@@ -29,6 +29,7 @@ namespace Proyecto_Final___Wingo
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Personalización));
             this.button2 = new System.Windows.Forms.Button();
             this.panel_nom = new System.Windows.Forms.Panel();
             this.bt_enviar_nombre = new System.Windows.Forms.Button();
@@ -539,9 +540,10 @@ namespace Proyecto_Final___Wingo
             // 
             // Personalización
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackgroundImage = global::Proyecto_Final___Wingo.Properties.Resources.Fondo_personalización;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.bt_paint);
             this.Controls.Add(this.bt_mouse);
@@ -551,7 +553,9 @@ namespace Proyecto_Final___Wingo
             this.Controls.Add(this.panel_nom);
             this.Controls.Add(this.panel_perfil);
             this.Controls.Add(this.button2);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Personalización";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Personalización";

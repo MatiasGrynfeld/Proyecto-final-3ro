@@ -221,6 +221,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="config.txt" />
+    <None Include="Resources\Fondo personalización.png" />
     <None Include="Resources\bt recor 2.png" />
     <None Include="Resources\bt recor1.png" />
     <None Include="Resources\bt ajustes.png" />

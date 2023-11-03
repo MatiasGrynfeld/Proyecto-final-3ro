@@ -111,16 +111,16 @@ namespace Proyecto_Final___Wingo
             return lineas[linea_a_leer - 1];
         }
 
-        public void escribir_colores(int linea_a_modificar, Color[,] colores)
+        public void escribir_colores(int linea_a_modificar, Color[,] colores, int numx, int numy)
         {
             string string_compuesto = "";
             string[] lineas = File.ReadAllLines(pathconfig);
 
-            for (int x = 0; x < 8; x++)
+            for (int x = 0; x < numx; x++)
             {
-                for (int y = 0; y < 8; y++)
+                for (int y = 0; y < numy; y++)
                 {
-                    Color color = colores[y, x];
+                    Color color = colores[x,y];
                     string rgb_color = $"{color.R}:{color.G}:{color.B}";
                     string_compuesto = $"{string_compuesto}{rgb_color},";
                 }
@@ -153,7 +153,7 @@ namespace Proyecto_Final___Wingo
                 {
                     for (int y = 0; y < my; y++)
                     {
-                        rMColores[y, x] = rColores[y + x * 8];
+                        rMColores[x,y] = rColores[y + x * my];
                     }
                 }
             }

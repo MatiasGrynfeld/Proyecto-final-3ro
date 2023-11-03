@@ -133,6 +133,16 @@ namespace Proyecto_Final___Wingo.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Fondo_personalización {
+            get {
+                object obj = ResourceManager.GetObject("Fondo personalización", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Fondo_principal {
             get {
                 object obj = ResourceManager.GetObject("Fondo principal", resourceCulture);

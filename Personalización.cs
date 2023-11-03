@@ -28,7 +28,9 @@ namespace Proyecto_Final___Wingo
         bool isNaming = false;
         Color color_pincel_inicial;
         Personalización___perfil color_wheel;
-        Rectangle[,] ellipses = new Rectangle[8, 8];
+        Rectangle[,] ellipses_arr = new Rectangle[8, 8];
+        Rectangle[,] ellipses_izq = new Rectangle[2, 16];
+        Rectangle[,] ellipses_der = new Rectangle[2, 16];
         Pen pen = new Pen(Color.Black);
         bool validado_seguido = false;
         bool cambia_nombre = false;
@@ -79,7 +81,7 @@ namespace Proyecto_Final___Wingo
             {
                 bt_perfil2.Text = "Nuevo Perfil";
             }
-            funciones.initializeLabels(this,lbl_pers);
+            funciones.initializeLabels(this, lbl_pers);
             funciones.initializeButtons(this);
             funciones.initializePanels(this, panel_nom);
         }
@@ -244,27 +246,49 @@ namespace Proyecto_Final___Wingo
                 return (true, nombre);
             }
         }
-        void crear_ellipses(int panelwidth, int panelheight, int numcellshor, int numcellsver)
+        void crear_ellipses(int panelwidth, int panelheight, int numcellshor, int numcellsver, int ang)
         {
             int cell_width = panelwidth / numcellshor;
             int cell_height = panelheight / numcellsver;
-
-            int startpositioninx = panelwidth / 2 - cell_width * 4;
-            int startpositioniny = panelheight / 2 - cell_height * 4;
-
-            for (int arriba = 0; arriba < 8; arriba++)
+            if (ang != 0)
             {
-                for (int horizontalmente = 0; horizontalmente < 8; horizontalmente++)
+                if (cell_width > 50)
+                {
+                    cell_width = 50;
+                }
+                if (cell_height > 50)
+                {
+                    cell_height = 50;
+                }
+            }
+
+            int startpositioninx = panelwidth / 2 - cell_width * numcellshor/2;
+            int startpositioniny = panelheight / 2 - cell_height * numcellsver/2;
+
+            for (int arriba = 0; arriba < numcellsver; arriba++)
+            {
+                for (int horizontalmente = 0; horizontalmente < numcellshor; horizontalmente++)
                 {
                     int x = startpositioninx + horizontalmente * cell_width;
                     int y = startpositioniny + arriba * cell_height;
                     Rectangle ellip = new Rectangle(x, y, cell_width, cell_height);
-                    ellipses[horizontalmente, arriba] = ellip;
+                    switch (ang)
+                    {
+                        case 0:
+                            ellipses_arr[arriba,horizontalmente] = ellip;
+                            break;
+                        case 1:
+                            ellipses_izq[arriba, horizontalmente] = ellip;
+                            break;
+                        case 2:
+                            ellipses_der[arriba, horizontalmente] = ellip;
+                            break;
+                    }
                 }
             }
         }
 
-        (bool, int, int, SolidBrush color) coloreando(bool dibujando, bool modo_dibujo, Color color_inicial, Color nuevo_color, Point punto, Graphics g)
+        (bool, int, int, SolidBrush color) coloreando(bool dibujando, bool modo_dibujo, Color color_inicial, Color nuevo_color, Point punto, Graphics g, int columnas, int filas, Rectangle[,] ellipses)
         {
             SolidBrush color = new SolidBrush(nuevo_color);
             int arriba_devuelve = -1;
@@ -282,9 +306,9 @@ namespace Proyecto_Final___Wingo
                 return (validado, arriba_devuelve, horizontalmente_devuelve, color);
             }
 
-            for (int arriba = 0; arriba < 8; arriba++)
+            for (int arriba = 0; arriba < columnas; arriba++)
             {
-                for (int horizontalmente = 0; horizontalmente < 8; horizontalmente++)
+                for (int horizontalmente = 0; horizontalmente < filas; horizontalmente++)
                 {
                     Rectangle rectangle = ellipses[horizontalmente, arriba];
                     if (rectangle.Contains(punto))
@@ -361,15 +385,15 @@ namespace Proyecto_Final___Wingo
         string[] modalidad_angulos_perfil1 = new string[3];
         string[] values_angulo_perfil1 = new string[3];
         Color[,] colores_arriba_perfil1 = new Color[8, 8];
-        Color[,] colores_izq_perfil1 = new Color[8, 8];
-        Color[,] colores_der_perfil1 = new Color[8, 8];
+        Color[,] colores_izq_perfil1 = new Color[2, 16];
+        Color[,] colores_der_perfil1 = new Color[2, 16];
 
         int filas_arr = 8;
         int columnas_arr = 8;
-        int filas_izq = 8;
-        int columnas_izq = 8;
-        int filas_der = 8;
-        int columnas_der = 8;
+        int filas_izq = 2;
+        int columnas_izq = 16;
+        int filas_der = 2;
+        int columnas_der = 16;
         private void iconButton1_Click(object sender, EventArgs e)
         {
             bt_perfil2.Enabled = true;
@@ -382,7 +406,7 @@ namespace Proyecto_Final___Wingo
             perfil_seleccionado = 1;
             validado_seguido = abrir_ventana(nombre_perfil_1, x, y1, perfil_seleccionado);
             Funciones funciones = new Funciones();
-            funciones.btPressed(sender, Color.Red, bt_perfil1, panel_borde,new Point(0,bt_perfil1.Location.Y));
+            funciones.btPressed(sender, Color.Red, bt_perfil1, panel_borde, new Point(0, bt_perfil1.Location.Y));
             funciones.btNotPressed(bt_perfil2);
         }
 
@@ -393,8 +417,8 @@ namespace Proyecto_Final___Wingo
         string[] modalidad_angulos_perfil2 = new string[3];
         string[] values_angulo_perfil2 = new string[3];
         Color[,] colores_arriba_perfil2 = new Color[8, 8];
-        Color[,] colores_izq_perfil2 = new Color[8, 8];
-        Color[,] colores_der_perfil2 = new Color[8, 8];
+        Color[,] colores_izq_perfil2 = new Color[2, 16];
+        Color[,] colores_der_perfil2 = new Color[2, 16];
         private void bt_perf2_Click(object sender, EventArgs e)
         {
             bt_perfil1.Enabled = true;
@@ -410,7 +434,6 @@ namespace Proyecto_Final___Wingo
             funciones.btPressed(sender, Color.Red, bt_perfil2, panel_borde, new Point(0, bt_perfil2.Location.Y));
             funciones.btNotPressed(bt_perfil1);
         }
-        //Aplicar iconos a manejo icon:car
 
         //Eventos nombre
 
@@ -599,6 +622,20 @@ namespace Proyecto_Final___Wingo
         }
 
         //Funciones paneles
+        (int, int) saberMedidas(int ang)
+        {
+            switch (ang)
+            {
+                case 0:
+                    return (columnas_arr,filas_arr);
+                case 1:
+                    return (columnas_izq, filas_izq);
+                case 2:
+                    return (columnas_der, filas_der);
+                default:
+                    return (0, 0);
+            }
+        }
         private void bt_reset_cols_Click(object sender, EventArgs e)
         {
             reseteando = true;
@@ -615,22 +652,24 @@ namespace Proyecto_Final___Wingo
                     break;
             }
         }
-        Color[,] dibujar_colorear_ellipses(Funciones funciones, int linea_leer, Graphics graph, int x, int y)
+        Color[,] dibujar_colorear_ellipses(Funciones funciones, int linea_leer, Graphics graph, int x, int y, Rectangle[,] ellipses)
         {
             var (colores_ellipses, rColores) = funciones.leer_colores(linea_leer, x, y);
-            int color_index = 0;
-            foreach (Rectangle rectangle in ellipses)
+            for (int i = 0; i < y; i++)
             {
-                graph.DrawEllipse(pen, rectangle);
-                if (colores_ellipses.Count > 0 && !reseteando)
+                for (int j = 0; j < x; j++)
                 {
-                    SolidBrush color = new SolidBrush(colores_ellipses[color_index]);
-                    if (color.Color != Color.FromArgb(0, 0, 0))
+                    Rectangle rectangle = ellipses[i,j];
+                    graph.DrawEllipse(pen, rectangle);
+                    if (colores_ellipses.Count > 0 && !reseteando)
                     {
-                        graph.FillEllipse(color, rectangle);
+                        SolidBrush color = new SolidBrush(rColores[j,i]);
+                        if (color.Color != Color.FromArgb(0, 0, 0))
+                        {
+                            graph.FillEllipse(color, rectangle);
+                        }
                     }
                 }
-                color_index++;
             }
             if (reseteando)
             {
@@ -639,10 +678,10 @@ namespace Proyecto_Final___Wingo
                 {
                     for (int j = 0; j < y; j++)
                     {
-                        rColores[i, j] = Color.FromArgb(0, 0, 0);
+                        rColores[j,i] = Color.FromArgb(0, 0, 0);
                     }
                 }
-                funciones.escribir_colores(linea_leer, rColores);
+                funciones.escribir_colores(linea_leer, rColores,x,y);
             }
             return rColores;
         }
@@ -653,7 +692,6 @@ namespace Proyecto_Final___Wingo
             if (modo_de_luz == "Independiente")
             {
                 open_form();
-                crear_ellipses(panel_arriba.Width, panel_arriba.Height, 8, 8);
                 bt_paint.Visible = true;
                 bt_mouse.Visible = true;
                 if (perfil_seleccionado == 1)
@@ -661,13 +699,16 @@ namespace Proyecto_Final___Wingo
                     switch (angulo_seleccionado)
                     {
                         case 0:
-                            colores_arriba_perfil1 = dibujar_colorear_ellipses(funciones, lin_1a, graph, columnas_arr, filas_arr);
+                            crear_ellipses(panel_arriba.Width, panel_arriba.Height, filas_arr, columnas_arr, angulo_seleccionado);
+                            colores_arriba_perfil1 = dibujar_colorear_ellipses(funciones, lin_1a, graph, columnas_arr, filas_arr, ellipses_arr);
                             break;
                         case 1:
-                            colores_izq_perfil1 = dibujar_colorear_ellipses(funciones, lin_1i, graph, columnas_izq, filas_izq);
+                            crear_ellipses(panel_izquierda.Width, panel_izquierda.Height, columnas_izq, filas_izq, angulo_seleccionado);
+                            colores_izq_perfil1 = dibujar_colorear_ellipses(funciones, lin_1i, graph, columnas_izq, filas_izq, ellipses_izq);
                             break;
                         case 2:
-                            colores_der_perfil1 = dibujar_colorear_ellipses(funciones, lin_1d, graph, columnas_der, filas_der);
+                            crear_ellipses(panel_derecha.Width, panel_derecha.Height, columnas_der, filas_der, angulo_seleccionado);
+                            colores_der_perfil1 = dibujar_colorear_ellipses(funciones, lin_1d, graph, columnas_der, filas_der, ellipses_der);
                             break;
                     }
                 }
@@ -676,13 +717,16 @@ namespace Proyecto_Final___Wingo
                     switch (angulo_seleccionado)
                     {
                         case 0:
-                            colores_arriba_perfil2 = dibujar_colorear_ellipses(funciones, lin_2a, graph, columnas_arr, filas_arr);
+                            crear_ellipses(panel_arriba.Width, panel_arriba.Height, filas_arr, columnas_arr, angulo_seleccionado);
+                            colores_arriba_perfil2 = dibujar_colorear_ellipses(funciones, lin_2a, graph, columnas_arr, filas_arr, ellipses_arr);
                             break;
                         case 1:
-                            colores_izq_perfil2 = dibujar_colorear_ellipses(funciones, lin_2i, graph, columnas_izq, filas_izq);
+                            crear_ellipses(panel_izquierda.Width, panel_izquierda.Height, columnas_izq, filas_izq, angulo_seleccionado);
+                            colores_izq_perfil2 = dibujar_colorear_ellipses(funciones, lin_2i, graph, columnas_izq, filas_izq, ellipses_izq);
                             break;
                         case 2:
-                            colores_der_perfil2 = dibujar_colorear_ellipses(funciones, lin_2d, graph, columnas_der, filas_der);
+                            crear_ellipses(panel_derecha.Width, panel_derecha.Height, columnas_der, filas_der, angulo_seleccionado);
+                            colores_der_perfil2 = dibujar_colorear_ellipses(funciones, lin_2d, graph, columnas_der, filas_der, ellipses_der);
                             break;
                     }
                 }
@@ -774,7 +818,7 @@ namespace Proyecto_Final___Wingo
                 }
             }
         }
-        void Mouse_down_move(string modo_de_luz, Graphics graph, Point lugar_clickeado, bool Mouse_down)
+        void Mouse_down_move(string modo_de_luz, Graphics graph, Point lugar_clickeado, bool Mouse_down, int cols, int filas, int ang)
         {
             if (modo_de_luz == "Independiente")
             {
@@ -782,7 +826,20 @@ namespace Proyecto_Final___Wingo
                 {
                     Dibujando = true;
                 }
-                var (validado, arriba, horizontalmente, color) = coloreando(Dibujando, Modo_dibujo, color_pincel_inicial, color_wheel.Color_del_panel(), lugar_clickeado, graph);
+                Rectangle[,] ellipses = new Rectangle[cols, filas];
+                switch (ang)
+                {
+                    case 0:
+                        ellipses = ellipses_arr;
+                        break;
+                    case 1:
+                        ellipses = ellipses_izq;
+                        break;
+                    case 2:
+                        ellipses = ellipses_der;
+                        break;
+                }
+                var (validado, arriba, horizontalmente, color) = coloreando(Dibujando, Modo_dibujo, color_pincel_inicial, color_wheel.Color_del_panel(), lugar_clickeado, graph, cols, filas, ellipses);
                 if (validado)
                 {
                     asignar_valores(modo_de_luz, horizontalmente, arriba, color, -1);
@@ -813,22 +870,22 @@ namespace Proyecto_Final___Wingo
                         switch (angulo_seleccionado)
                         {
                             case 0:
-                                colores_arriba_perfil1[arriba, horizontalmente] = color.Color;
+                                colores_arriba_perfil1[arriba,horizontalmente] = color.Color;
                                 values_angulo_perfil1[0] = "independiente";
                                 funciones.escribir_datos(mod_1a, "independiente");
-                                funciones.escribir_colores(lin_1a, colores_arriba_perfil1);
+                                funciones.escribir_colores(lin_1a, colores_arriba_perfil1, columnas_arr, filas_arr);
                                 return;
                             case 1:
                                 colores_izq_perfil1[arriba, horizontalmente] = color.Color;
                                 values_angulo_perfil1[1] = "independiente";
                                 funciones.escribir_datos(mod_1i, "independiente");
-                                funciones.escribir_colores(lin_1i, colores_izq_perfil1);
+                                funciones.escribir_colores(lin_1i, colores_izq_perfil1, columnas_izq, filas_izq);
                                 return;
                             case 2:
                                 colores_der_perfil1[arriba, horizontalmente] = color.Color;
                                 values_angulo_perfil1[2] = "independiente";
                                 funciones.escribir_datos(mod_1d, "independiente");
-                                funciones.escribir_colores(lin_1d, colores_der_perfil1);
+                                funciones.escribir_colores(lin_1d, colores_der_perfil1, columnas_der, filas_der);
                                 return;
                         }
                         return;
@@ -839,19 +896,19 @@ namespace Proyecto_Final___Wingo
                                 colores_arriba_perfil2[arriba, horizontalmente] = color.Color;
                                 values_angulo_perfil2[0] = "independiente";
                                 funciones.escribir_datos(mod_2a, "independiente");
-                                funciones.escribir_colores(lin_2a, colores_arriba_perfil2);
+                                funciones.escribir_colores(lin_2a, colores_arriba_perfil2, columnas_arr, filas_arr);
                                 return;
                             case 1:
                                 colores_izq_perfil2[arriba, horizontalmente] = color.Color;
                                 values_angulo_perfil2[1] = "independiente";
                                 funciones.escribir_datos(mod_2i, "independiente");
-                                funciones.escribir_colores(lin_2i, colores_izq_perfil2);
+                                funciones.escribir_colores(lin_2i, colores_izq_perfil2, columnas_izq, filas_izq);
                                 return;
                             case 2:
                                 colores_der_perfil2[arriba, horizontalmente] = color.Color;
                                 values_angulo_perfil2[2] = "independiente";
                                 funciones.escribir_datos(mod_2d, "independiente");
-                                funciones.escribir_colores(lin_2d, colores_der_perfil2);
+                                funciones.escribir_colores(lin_2d, colores_der_perfil2, columnas_der, filas_der);
                                 return;
                         }
                         return;
@@ -947,14 +1004,16 @@ namespace Proyecto_Final___Wingo
         {
             Point punto_click = e.Location;
             bool activar_dibujar = true;
-            Mouse_down_move(Comb_tipos_personalizados.SelectedItem.ToString(), graphs_arriba, punto_click, activar_dibujar);
+            var (cols, filas) = saberMedidas(angulo_seleccionado);
+            Mouse_down_move(Comb_tipos_personalizados.SelectedItem.ToString(), graphs_arriba, punto_click, activar_dibujar, cols, filas, angulo_seleccionado);
         }
 
         private void panel_arriba_MouseMove(object sender, MouseEventArgs e)
         {
             Point punto_click = e.Location;
             bool activar_dibujar = false;
-            Mouse_down_move(Comb_tipos_personalizados.SelectedItem.ToString(), graphs_arriba, punto_click, activar_dibujar);
+            var (cols, filas) = saberMedidas(angulo_seleccionado);
+            Mouse_down_move(Comb_tipos_personalizados.SelectedItem.ToString(), graphs_arriba, punto_click, activar_dibujar, cols, filas, angulo_seleccionado);
         }
 
         private void panel_arriba_MouseUp(object sender, MouseEventArgs e)
@@ -994,13 +1053,15 @@ namespace Proyecto_Final___Wingo
         {
             Point punto_click = e.Location;
             bool activar_dibujar = true;
-            Mouse_down_move(Comb_tipos_personalizados.SelectedItem.ToString(), graphs_derecha, punto_click, activar_dibujar);
+            var (cols, filas) = saberMedidas(angulo_seleccionado);
+            Mouse_down_move(Comb_tipos_personalizados.SelectedItem.ToString(), graphs_derecha, punto_click, activar_dibujar, cols, filas, angulo_seleccionado);
         }
         private void panel_derecha_MouseMove(object sender, MouseEventArgs e)
         {
             Point punto_click = e.Location;
             bool activar_dibujar = false;
-            Mouse_down_move(Comb_tipos_personalizados.SelectedItem.ToString(), graphs_derecha, punto_click, activar_dibujar);
+            var (cols, filas) = saberMedidas(angulo_seleccionado);
+            Mouse_down_move(Comb_tipos_personalizados.SelectedItem.ToString(), graphs_derecha, punto_click, activar_dibujar, cols, filas, angulo_seleccionado);
         }
         private void panel_derecha_MouseUp(object sender, MouseEventArgs e)
         {
@@ -1027,13 +1088,15 @@ namespace Proyecto_Final___Wingo
         {
             Point punto_click = e.Location;
             bool activar_dibujar = true;
-            Mouse_down_move(Comb_tipos_personalizados.SelectedItem.ToString(), graphs_izq, punto_click, activar_dibujar);
+            var (cols, filas) = saberMedidas(angulo_seleccionado);
+            Mouse_down_move(Comb_tipos_personalizados.SelectedItem.ToString(), graphs_izq, punto_click, activar_dibujar, cols, filas, angulo_seleccionado);
         }
         private void panel_izquierda_MouseMove(object sender, MouseEventArgs e)
         {
             Point punto_click = e.Location;
             bool activar_dibujar = false;
-            Mouse_down_move(Comb_tipos_personalizados.SelectedItem.ToString(), graphs_izq, punto_click, activar_dibujar);
+            var (cols, filas) = saberMedidas(angulo_seleccionado);
+            Mouse_down_move(Comb_tipos_personalizados.SelectedItem.ToString(), graphs_izq, punto_click, activar_dibujar, cols, filas, angulo_seleccionado);
 
         }
         private void panel_izquierda_MouseUp(object sender, MouseEventArgs e)
@@ -1075,7 +1138,7 @@ namespace Proyecto_Final___Wingo
                         {
                             for (int columna = 0; columna < cant_columnas; columna++)
                             {
-                                mensaje = func_enviar.string_a_enviar("personalizacion", perfil, angulo, modalidad_angulos_perfil1[angulo], values_angulo_perfil1[angulo], matriz_colores1[fila, columna], fila, columna, "", -1);
+                                mensaje = func_enviar.string_a_enviar("personalizacion", perfil, angulo, modalidad_angulos_perfil1[angulo], values_angulo_perfil1[angulo], matriz_colores1[columna,fila], fila, columna, "", -1);
                                 if (comprobar_msg(mensaje))
                                 {
                                     mensajes.Add(mensaje);
@@ -1144,12 +1207,12 @@ namespace Proyecto_Final___Wingo
                         msgs_angulo_arr2 = hacer_mensaje(i, filas_arr, columnas_arr, modalidad_angulos_perfil2[i], colores_arriba_perfil1, colores_arriba_perfil2, 2);
                         break;
                     case 1:
-                        msgs_angulo_izq1 = hacer_mensaje(i, filas_izq, columnas_izq, modalidad_angulos_perfil1[i], colores_arriba_perfil1, colores_arriba_perfil2, 1);
-                        msgs_angulo_izq2 = hacer_mensaje(i, filas_izq, columnas_izq, modalidad_angulos_perfil2[i], colores_arriba_perfil1, colores_arriba_perfil2, 2);
+                        msgs_angulo_izq1 = hacer_mensaje(i, filas_izq, columnas_izq, modalidad_angulos_perfil1[i], colores_izq_perfil1, colores_arriba_perfil2, 1);
+                        msgs_angulo_izq2 = hacer_mensaje(i, filas_izq, columnas_izq, modalidad_angulos_perfil2[i], colores_izq_perfil1, colores_arriba_perfil2, 2);
                         break;
                     case 2:
-                        msgs_angulo_der1 = hacer_mensaje(i, filas_der, columnas_der, modalidad_angulos_perfil1[i], colores_arriba_perfil1, colores_arriba_perfil2, 1);
-                        msgs_angulo_der2 = hacer_mensaje(i, filas_der, columnas_der, modalidad_angulos_perfil2[i], colores_arriba_perfil1, colores_arriba_perfil2, 2);
+                        msgs_angulo_der1 = hacer_mensaje(i, filas_der, columnas_der, modalidad_angulos_perfil1[i], colores_der_perfil1, colores_arriba_perfil2, 1);
+                        msgs_angulo_der2 = hacer_mensaje(i, filas_der, columnas_der, modalidad_angulos_perfil2[i], colores_der_perfil1, colores_arriba_perfil2, 2);
                         break;
                 }
             }

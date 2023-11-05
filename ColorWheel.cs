@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
+using System.Windows.Media.Media3D;
+using System.Windows.Shapes;
 
 namespace Proyecto_Final___Wingo
 {
@@ -26,7 +28,7 @@ namespace Proyecto_Final___Wingo
 
         void color_picker(Graphics graphs, int wid, int hgt)
         {
-            Rectangle perimetro = new Rectangle(0, 0, wid, hgt);
+            System.Drawing.Rectangle perimetro = new System.Drawing.Rectangle(0, 0, wid, hgt);
             GraphicsPath camino = new GraphicsPath();
             camino.AddEllipse(perimetro);
             camino.Flatten();
@@ -72,8 +74,7 @@ namespace Proyecto_Final___Wingo
             path_brush.SurroundColors = surround_colors;
             graphs.FillEllipse(path_brush, perimetro);
         }
-
-        Color obtener_color_pixel(Point lugar_clickeado)
+        Color obtener_color_pixel(Point lugar_clickeado, Graphics g)
         {
             Point centro = new Point(panel_wheel.Width / 2, panel_wheel.Height / 2);
             Bitmap perimetro = new Bitmap(panel_wheel.Width, panel_wheel.Height);
@@ -81,7 +82,6 @@ namespace Proyecto_Final___Wingo
 
             double radio = panel_wheel.Width / 2;
             double distancia = CalcularDistancia(centro.X,centro.Y,lugar_clickeado.X,lugar_clickeado.Y);
-
             if (distancia <= radio)
             {
                 Color color_pixel = perimetro.GetPixel(lugar_clickeado.X, lugar_clickeado.Y);
@@ -154,7 +154,8 @@ namespace Proyecto_Final___Wingo
         }
         private void panel_wheel_MouseClick(object sender, MouseEventArgs e)
         {
-            color_leds=obtener_color_pixel(e.Location);
+            Graphics graph = panel_wheel.CreateGraphics();
+            color_leds=obtener_color_pixel(e.Location,graph);
         }
         private void panel_wheel_MouseDown(object sender, MouseEventArgs e)
         {
@@ -164,7 +165,8 @@ namespace Proyecto_Final___Wingo
         {
             if (mouse_apretado)
             {
-                color_leds = obtener_color_pixel(e.Location);
+                Graphics graph = panel_wheel.CreateGraphics();
+                color_leds = obtener_color_pixel(e.Location, graph);
             }
         }
         private void panel_wheel_MouseUp(object sender, MouseEventArgs e)

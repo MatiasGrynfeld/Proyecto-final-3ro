@@ -92,6 +92,7 @@ namespace Proyecto_Final___Wingo
             // 
             // panel_nom
             // 
+            this.panel_nom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(143)))), ((int)(((byte)(60)))));
             this.panel_nom.Controls.Add(this.bt_enviar_nombre);
             this.panel_nom.Controls.Add(this.txt_nombre);
             this.panel_nom.Controls.Add(this.lbl_nombre);
@@ -152,6 +153,8 @@ namespace Proyecto_Final___Wingo
             // 
             // bt_reset_cols
             // 
+            this.bt_reset_cols.BackgroundImage = global::Proyecto_Final___Wingo.Properties.Resources.bt_pers;
+            this.bt_reset_cols.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bt_reset_cols.IconChar = FontAwesome.Sharp.IconChar.Rotate;
             this.bt_reset_cols.IconColor = System.Drawing.Color.Black;
             this.bt_reset_cols.IconFont = FontAwesome.Sharp.IconFont.Auto;
@@ -209,6 +212,7 @@ namespace Proyecto_Final___Wingo
             // 
             // trackBar_der
             // 
+            this.trackBar_der.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(143)))), ((int)(((byte)(60)))));
             this.trackBar_der.Location = new System.Drawing.Point(60, 55);
             this.trackBar_der.Maximum = 1000;
             this.trackBar_der.Minimum = 1;
@@ -278,6 +282,7 @@ namespace Proyecto_Final___Wingo
             // 
             // trackBar_izq
             // 
+            this.trackBar_izq.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(143)))), ((int)(((byte)(60)))));
             this.trackBar_izq.Location = new System.Drawing.Point(60, 55);
             this.trackBar_izq.Maximum = 1000;
             this.trackBar_izq.Minimum = 1;
@@ -373,6 +378,7 @@ namespace Proyecto_Final___Wingo
             // 
             // trackBar_arr
             // 
+            this.trackBar_arr.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(143)))), ((int)(((byte)(60)))));
             this.trackBar_arr.Location = new System.Drawing.Point(60, 55);
             this.trackBar_arr.Maximum = 1000;
             this.trackBar_arr.Minimum = 1;
@@ -415,6 +421,8 @@ namespace Proyecto_Final___Wingo
             // 
             // bt_cambiar_nombre
             // 
+            this.bt_cambiar_nombre.BackgroundImage = global::Proyecto_Final___Wingo.Properties.Resources.bt_pers;
+            this.bt_cambiar_nombre.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bt_cambiar_nombre.Location = new System.Drawing.Point(448, 3);
             this.bt_cambiar_nombre.Name = "bt_cambiar_nombre";
             this.bt_cambiar_nombre.Size = new System.Drawing.Size(147, 58);
@@ -425,16 +433,20 @@ namespace Proyecto_Final___Wingo
             // 
             // bt_enviar_configuraciones
             // 
-            this.bt_enviar_configuraciones.Location = new System.Drawing.Point(0, 539);
+            this.bt_enviar_configuraciones.BackgroundImage = global::Proyecto_Final___Wingo.Properties.Resources.bt_pers;
+            this.bt_enviar_configuraciones.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bt_enviar_configuraciones.Location = new System.Drawing.Point(0, 518);
             this.bt_enviar_configuraciones.Name = "bt_enviar_configuraciones";
-            this.bt_enviar_configuraciones.Size = new System.Drawing.Size(144, 60);
+            this.bt_enviar_configuraciones.Size = new System.Drawing.Size(144, 81);
             this.bt_enviar_configuraciones.TabIndex = 8;
-            this.bt_enviar_configuraciones.Text = "Enviar configuraciones";
+            this.bt_enviar_configuraciones.Text = "Enviar Perfiles";
             this.bt_enviar_configuraciones.UseVisualStyleBackColor = true;
             this.bt_enviar_configuraciones.Click += new System.EventHandler(this.bt_enviar_configuraciones_Click);
             // 
             // bt_manejo
             // 
+            this.bt_manejo.BackgroundImage = global::Proyecto_Final___Wingo.Properties.Resources.bt_pers;
+            this.bt_manejo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bt_manejo.Location = new System.Drawing.Point(0, 386);
             this.bt_manejo.Name = "bt_manejo";
             this.bt_manejo.Size = new System.Drawing.Size(144, 60);
@@ -457,13 +469,15 @@ namespace Proyecto_Final___Wingo
             // 
             // bt_perfil2
             // 
+            this.bt_perfil2.BackgroundImage = global::Proyecto_Final___Wingo.Properties.Resources.bt_pers;
+            this.bt_perfil2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bt_perfil2.IconChar = FontAwesome.Sharp.IconChar.Sliders;
             this.bt_perfil2.IconColor = System.Drawing.Color.Black;
             this.bt_perfil2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.bt_perfil2.IconSize = 40;
-            this.bt_perfil2.Location = new System.Drawing.Point(0, 94);
+            this.bt_perfil2.Location = new System.Drawing.Point(0, 106);
             this.bt_perfil2.Name = "bt_perfil2";
-            this.bt_perfil2.Size = new System.Drawing.Size(144, 60);
+            this.bt_perfil2.Size = new System.Drawing.Size(144, 80);
             this.bt_perfil2.TabIndex = 14;
             this.bt_perfil2.Text = "Nuevo Perfil";
             this.bt_perfil2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -473,13 +487,15 @@ namespace Proyecto_Final___Wingo
             // 
             // bt_perfil1
             // 
+            this.bt_perfil1.BackgroundImage = global::Proyecto_Final___Wingo.Properties.Resources.bt_pers;
+            this.bt_perfil1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bt_perfil1.IconChar = FontAwesome.Sharp.IconChar.Sliders;
             this.bt_perfil1.IconColor = System.Drawing.Color.Black;
             this.bt_perfil1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.bt_perfil1.IconSize = 40;
             this.bt_perfil1.Location = new System.Drawing.Point(0, 12);
             this.bt_perfil1.Name = "bt_perfil1";
-            this.bt_perfil1.Size = new System.Drawing.Size(144, 60);
+            this.bt_perfil1.Size = new System.Drawing.Size(144, 83);
             this.bt_perfil1.TabIndex = 13;
             this.bt_perfil1.Text = "Nuevo Perfil";
             this.bt_perfil1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -489,8 +505,10 @@ namespace Proyecto_Final___Wingo
             // 
             // bt_cerrar
             // 
+            this.bt_cerrar.BackgroundImage = global::Proyecto_Final___Wingo.Properties.Resources.bt_pers;
+            this.bt_cerrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bt_cerrar.IconChar = FontAwesome.Sharp.IconChar.Backward;
-            this.bt_cerrar.IconColor = System.Drawing.Color.Blue;
+            this.bt_cerrar.IconColor = System.Drawing.Color.Black;
             this.bt_cerrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.bt_cerrar.Location = new System.Drawing.Point(0, 452);
             this.bt_cerrar.Name = "bt_cerrar";
@@ -504,6 +522,7 @@ namespace Proyecto_Final___Wingo
             this.lbl_pers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_pers.AutoEllipsis = true;
             this.lbl_pers.AutoSize = true;
+            this.lbl_pers.BackColor = System.Drawing.Color.Transparent;
             this.lbl_pers.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbl_pers.Location = new System.Drawing.Point(15, 9);
             this.lbl_pers.Name = "lbl_pers";
@@ -514,26 +533,30 @@ namespace Proyecto_Final___Wingo
             // 
             // bt_mouse
             // 
+            this.bt_mouse.BackgroundImage = global::Proyecto_Final___Wingo.Properties.Resources.bt_pers;
             this.bt_mouse.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bt_mouse.IconChar = FontAwesome.Sharp.IconChar.ArrowPointer;
             this.bt_mouse.IconColor = System.Drawing.Color.Black;
             this.bt_mouse.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.bt_mouse.IconSize = 45;
-            this.bt_mouse.Location = new System.Drawing.Point(897, 8);
+            this.bt_mouse.IconSize = 40;
+            this.bt_mouse.Location = new System.Drawing.Point(897, 3);
             this.bt_mouse.Name = "bt_mouse";
-            this.bt_mouse.Size = new System.Drawing.Size(50, 50);
+            this.bt_mouse.Size = new System.Drawing.Size(61, 60);
             this.bt_mouse.TabIndex = 11;
             this.bt_mouse.UseVisualStyleBackColor = true;
             this.bt_mouse.Click += new System.EventHandler(this.bt_mousr_Click);
             // 
             // bt_paint
             // 
+            this.bt_paint.BackgroundImage = global::Proyecto_Final___Wingo.Properties.Resources.bt_pers;
+            this.bt_paint.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bt_paint.IconChar = FontAwesome.Sharp.IconChar.PaintRoller;
             this.bt_paint.IconColor = System.Drawing.Color.Black;
             this.bt_paint.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.bt_paint.Location = new System.Drawing.Point(981, 8);
+            this.bt_paint.IconSize = 40;
+            this.bt_paint.Location = new System.Drawing.Point(981, 3);
             this.bt_paint.Name = "bt_paint";
-            this.bt_paint.Size = new System.Drawing.Size(50, 50);
+            this.bt_paint.Size = new System.Drawing.Size(61, 60);
             this.bt_paint.TabIndex = 12;
             this.bt_paint.UseVisualStyleBackColor = true;
             this.bt_paint.Click += new System.EventHandler(this.bt_paint_Click);
@@ -542,7 +565,7 @@ namespace Proyecto_Final___Wingo
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.BackgroundImage = global::Proyecto_Final___Wingo.Properties.Resources.Fondo_personalización;
+            this.BackgroundImage = global::Proyecto_Final___Wingo.Properties.Resources.fondo_personalización_2;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.bt_paint);

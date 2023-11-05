@@ -108,6 +108,8 @@ namespace Proyecto_Final___Wingo
             // 
             // bt_resetear
             // 
+            this.bt_resetear.BackgroundImage = global::Proyecto_Final___Wingo.Properties.Resources.bt_pers;
+            this.bt_resetear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bt_resetear.Location = new System.Drawing.Point(15, 12);
             this.bt_resetear.Name = "bt_resetear";
             this.bt_resetear.Size = new System.Drawing.Size(85, 39);
@@ -118,6 +120,8 @@ namespace Proyecto_Final___Wingo
             // 
             // bt_apagado
             // 
+            this.bt_apagado.BackgroundImage = global::Proyecto_Final___Wingo.Properties.Resources.bt_pers;
+            this.bt_apagado.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bt_apagado.Location = new System.Drawing.Point(146, 12);
             this.bt_apagado.Name = "bt_apagado";
             this.bt_apagado.Size = new System.Drawing.Size(85, 39);
@@ -130,7 +134,7 @@ namespace Proyecto_Final___Wingo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(143)))), ((int)(((byte)(60)))));
             this.ClientSize = new System.Drawing.Size(375, 551);
             this.Controls.Add(this.bt_apagado);
             this.Controls.Add(this.bt_resetear);

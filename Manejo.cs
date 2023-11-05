@@ -670,24 +670,25 @@ namespace Proyecto_Final___Wingo
             {
                 Funciones funciones = new Funciones();
                 List<string> mensajes = new List<string>();
+                int filas= 0;
                 switch (recor_seleccionado)
                 {
                     case 1:
                         for (int i = 0; i < paso_recor_1.Count; i++)
                         {
-                            mensajes.Add(funciones.string_a_enviar("manejo", -1, -1, "", "", Color.White, -1, -1, paso_recor_1[i], cant_paso_recor_1[i]));
+                            mensajes.Add(funciones.string_a_enviar("manejo", -1, -1, "", "", Color.White, -1, -1, paso_recor_1[i], cant_paso_recor_1[i], filas));
                         }
                         break;
                     case 2:
                         for (int i = 0; i < paso_recor_2.Count; i++)
                         {
-                            mensajes.Add(funciones.string_a_enviar("manejo", -1, -1, "", "", Color.White, -1, -1, paso_recor_2[i], cant_paso_recor_2[i]));
+                            mensajes.Add(funciones.string_a_enviar("manejo", -1, -1, "", "", Color.White, -1, -1, paso_recor_2[i], cant_paso_recor_2[i], filas));
                         }
                         break;
                     case 3:
                         for (int i = 0; i < paso_recor_3.Count; i++)
                         {
-                            mensajes.Add(funciones.string_a_enviar("manejo", -1, -1, "", "", Color.White, -1, -1, paso_recor_3[i], cant_paso_recor_3[i]));
+                            mensajes.Add(funciones.string_a_enviar("manejo", -1, -1, "", "", Color.White, -1, -1, paso_recor_3[i], cant_paso_recor_3[i], filas));
                         }
                         break;
                 }
@@ -696,7 +697,7 @@ namespace Proyecto_Final___Wingo
                 {
                     SerialPort arduino = new SerialPort();
                     arduino.PortName = funciones.leer_datos(1);
-                    arduino.BaudRate = 9600;
+                    arduino.BaudRate = 115200;
                     arduino.Parity = Parity.None;
                     try
                     {
@@ -734,7 +735,7 @@ namespace Proyecto_Final___Wingo
                                 num_mensaje++;
                                 if (distinto || result == DialogResult.Yes)
                                 {
-                                    Thread.Sleep(150);
+                                    Thread.Sleep(200);
                                 }
                             }
                             progressBar.Close();

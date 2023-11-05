@@ -31,7 +31,7 @@ namespace Proyecto_Final___Wingo
         Rectangle[,] ellipses_arr = new Rectangle[8, 8];
         Rectangle[,] ellipses_izq = new Rectangle[2, 16];
         Rectangle[,] ellipses_der = new Rectangle[2, 16];
-        Pen pen = new Pen(Color.Black);
+        Pen pen = new Pen(Color.White, 3);
         bool validado_seguido = false;
         bool cambia_nombre = false;
         bool reseteando = false;
@@ -406,7 +406,7 @@ namespace Proyecto_Final___Wingo
             perfil_seleccionado = 1;
             validado_seguido = abrir_ventana(nombre_perfil_1, x, y1, perfil_seleccionado);
             Funciones funciones = new Funciones();
-            funciones.btPressed(sender, Color.Red, bt_perfil1, panel_borde, new Point(0, bt_perfil1.Location.Y));
+            funciones.btPressed(sender, Color.FromArgb(187,178,181), bt_perfil1, panel_borde, new Point(0, bt_perfil1.Location.Y));
             funciones.btNotPressed(bt_perfil2);
         }
 
@@ -431,7 +431,7 @@ namespace Proyecto_Final___Wingo
             perfil_seleccionado = 2;
             validado_seguido = abrir_ventana(nombre_perfil_2, x, y2, perfil_seleccionado);
             Funciones funciones = new Funciones();
-            funciones.btPressed(sender, Color.Red, bt_perfil2, panel_borde, new Point(0, bt_perfil2.Location.Y));
+            funciones.btPressed(sender, Color.FromArgb(187, 178, 181), bt_perfil2, panel_borde, new Point(0, bt_perfil2.Location.Y));
             funciones.btNotPressed(bt_perfil1);
         }
 
@@ -495,16 +495,16 @@ namespace Proyecto_Final___Wingo
             {
                 panel_wheel.Visible = false;
             }
-            lbl_selec_velocidad_arr.Visible = false;
-            lbl_selec_velocidad_izq.Visible = false;
-            lbl_selec_velocidad_der.Visible = false;
-            lbl_selec_velocidad_arr.Location = new Point(110, 30);
-            lbl_selec_velocidad_izq.Location = new Point(110, 30);
-            lbl_selec_velocidad_der.Location = new Point(110, 30);
-            int x_velocidades = 160;
             int y_rap = 75;
             int y_len = 414;
             int y_med = 217;
+            int x_velocidades = 350;
+            lbl_selec_velocidad_arr.Visible = false;
+            lbl_selec_velocidad_izq.Visible = false;
+            lbl_selec_velocidad_der.Visible = false;
+            lbl_selec_velocidad_arr.Location = new Point(300, 15);
+            lbl_selec_velocidad_izq.Location = new Point(300, 15);
+            lbl_selec_velocidad_der.Location = new Point(300, 15);
             lbl_rap_arr.Visible = false;
             lbl_rap_izq.Visible = false;
             lbl_rap_der.Visible = false;
@@ -523,6 +523,9 @@ namespace Proyecto_Final___Wingo
             lbl_len_arr.Location = new Point(x_velocidades, y_len);
             lbl_len_izq.Location = new Point(x_velocidades, y_len);
             lbl_len_der.Location = new Point(x_velocidades, y_len);
+            trackBar_arr.Location = new Point(300, 55);
+            trackBar_izq.Location = new Point(300, 55);
+            trackBar_der.Location = new Point(300, 55);
             trackBar_arr.Visible = false;
             trackBar_izq.Visible = false;
             trackBar_der.Visible = false;
@@ -678,7 +681,7 @@ namespace Proyecto_Final___Wingo
                 {
                     for (int j = 0; j < y; j++)
                     {
-                        rColores[j,i] = Color.FromArgb(0, 0, 0);
+                        rColores[i,j] = Color.FromArgb(0, 0, 0);
                     }
                 }
                 funciones.escribir_colores(linea_leer, rColores,x,y);
@@ -1124,7 +1127,7 @@ namespace Proyecto_Final___Wingo
             return false;
 
         }
-        List<string> hacer_mensaje(int angulo, int cant_filas, int cant_columnas, string modalidad, Color[,] matriz_colores1, Color[,] matriz_colores2, int perfil)
+        List<string> hacer_mensaje(int angulo, int cant_filas, int cant_columnas, string modalidad, Color[,] matriz_colores1, Color[,] matriz_colores2, int perfil, int columnas)
         {
             List<string> mensajes = new List<string>();
             Funciones func_enviar = new Funciones();
@@ -1138,7 +1141,7 @@ namespace Proyecto_Final___Wingo
                         {
                             for (int columna = 0; columna < cant_columnas; columna++)
                             {
-                                mensaje = func_enviar.string_a_enviar("personalizacion", perfil, angulo, modalidad_angulos_perfil1[angulo], values_angulo_perfil1[angulo], matriz_colores1[columna,fila], fila, columna, "", -1);
+                                mensaje = func_enviar.string_a_enviar("personalizacion", perfil, angulo, modalidad_angulos_perfil1[angulo], values_angulo_perfil1[angulo], matriz_colores1[columna,fila], fila, columna, "", -1, columnas);
                                 if (comprobar_msg(mensaje))
                                 {
                                     mensajes.Add(mensaje);
@@ -1151,7 +1154,7 @@ namespace Proyecto_Final___Wingo
                         {
                             for (int columna = 0; columna < cant_columnas; columna++)
                             {
-                                mensaje = func_enviar.string_a_enviar("personalizacion", perfil, angulo, modalidad_angulos_perfil1[angulo], values_angulo_perfil1[angulo], matriz_colores2[fila, columna], fila, columna, "", -1);
+                                mensaje = func_enviar.string_a_enviar("personalizacion", perfil, angulo, modalidad_angulos_perfil1[angulo], values_angulo_perfil1[angulo], matriz_colores2[columna,fila], fila, columna, "", -1, columnas);
                                 if (comprobar_msg(mensaje))
                                 {
                                     mensajes.Add(mensaje);
@@ -1166,14 +1169,14 @@ namespace Proyecto_Final___Wingo
                 switch (perfil)
                 {
                     case 1:
-                        mensaje = func_enviar.string_a_enviar("personalizacion", perfil, angulo, modalidad_angulos_perfil1[angulo], values_angulo_perfil1[angulo], Color.White, -1, -1, "", -1);
+                        mensaje = func_enviar.string_a_enviar("personalizacion", perfil, angulo, modalidad_angulos_perfil1[angulo], values_angulo_perfil1[angulo], Color.White, -1, -1, "", -1, columnas);
                         if (comprobar_msg(mensaje))
                         {
                             mensajes.Add(mensaje);
                         }
                         return mensajes;
                     case 2:
-                        mensaje = func_enviar.string_a_enviar("personalizacion", perfil, angulo, modalidad_angulos_perfil2[angulo], values_angulo_perfil2[angulo], Color.White, -1, -1, "", -1);
+                        mensaje = func_enviar.string_a_enviar("personalizacion", perfil, angulo, modalidad_angulos_perfil2[angulo], values_angulo_perfil2[angulo], Color.White, -1, -1, "", -1, columnas);
                         if (comprobar_msg(mensaje))
                         {
                             mensajes.Add(mensaje);
@@ -1203,16 +1206,16 @@ namespace Proyecto_Final___Wingo
                 switch (i)
                 {
                     case 0:
-                        msgs_angulo_arr1 = hacer_mensaje(i, filas_arr, columnas_arr, modalidad_angulos_perfil1[i], colores_arriba_perfil1, colores_arriba_perfil2, 1);
-                        msgs_angulo_arr2 = hacer_mensaje(i, filas_arr, columnas_arr, modalidad_angulos_perfil2[i], colores_arriba_perfil1, colores_arriba_perfil2, 2);
+                        msgs_angulo_arr1 = hacer_mensaje(i, filas_arr, columnas_arr, modalidad_angulos_perfil1[i], colores_arriba_perfil1, colores_arriba_perfil2, 1, columnas_arr);
+                        msgs_angulo_arr2 = hacer_mensaje(i, filas_arr, columnas_arr, modalidad_angulos_perfil2[i], colores_arriba_perfil1, colores_arriba_perfil2, 2, columnas_arr);
                         break;
                     case 1:
-                        msgs_angulo_izq1 = hacer_mensaje(i, filas_izq, columnas_izq, modalidad_angulos_perfil1[i], colores_izq_perfil1, colores_arriba_perfil2, 1);
-                        msgs_angulo_izq2 = hacer_mensaje(i, filas_izq, columnas_izq, modalidad_angulos_perfil2[i], colores_izq_perfil1, colores_arriba_perfil2, 2);
+                        msgs_angulo_izq1 = hacer_mensaje(i, filas_izq, columnas_izq, modalidad_angulos_perfil1[i], colores_izq_perfil1, colores_izq_perfil2, 1, columnas_izq);
+                        msgs_angulo_izq2 = hacer_mensaje(i, filas_izq, columnas_izq, modalidad_angulos_perfil2[i], colores_izq_perfil1, colores_izq_perfil2, 2, columnas_izq);
                         break;
                     case 2:
-                        msgs_angulo_der1 = hacer_mensaje(i, filas_der, columnas_der, modalidad_angulos_perfil1[i], colores_der_perfil1, colores_arriba_perfil2, 1);
-                        msgs_angulo_der2 = hacer_mensaje(i, filas_der, columnas_der, modalidad_angulos_perfil2[i], colores_der_perfil1, colores_arriba_perfil2, 2);
+                        msgs_angulo_der1 = hacer_mensaje(i, filas_der, columnas_der, modalidad_angulos_perfil1[i], colores_der_perfil1, colores_der_perfil2, 1, columnas_der);
+                        msgs_angulo_der2 = hacer_mensaje(i, filas_der, columnas_der, modalidad_angulos_perfil2[i], colores_der_perfil1, colores_der_perfil2, 2, columnas_der);
                         break;
                 }
             }
@@ -1221,48 +1224,96 @@ namespace Proyecto_Final___Wingo
             {
                 SerialPort arduino = new SerialPort();
                 arduino.PortName = funciones.leer_datos(1);
-                arduino.BaudRate = 9600;
+                arduino.BaudRate = 2000000;
                 arduino.Parity = Parity.None;
                 try
                 {
                     DialogResult result = MessageBox.Show("¿Desea enviar todos las configuraciones desde cero? NOTA: puede tardar más tiempo", "Enviando", MessageBoxButtons.YesNoCancel);
                     if (result != DialogResult.Cancel)
                     {
-                        string[] todos_msgs = msgs_angulo_arr1.Concat(msgs_angulo_arr2).Concat(msgs_angulo_der1).Concat(msgs_angulo_der2).Concat(msgs_angulo_izq1).Concat(msgs_angulo_izq2).ToArray();
+                        List<string> todos_msgs = msgs_angulo_arr1.Concat(msgs_angulo_arr2).Concat(msgs_angulo_izq1).Concat(msgs_angulo_izq2).Concat(msgs_angulo_der1).Concat(msgs_angulo_der2).ToList();
+                        //{
+                        //    string[] a = File.ReadAllLines(Program.pathConfig);
+                        //    List<string> combinedLines = a.ToList();
+                        //    combinedLines.AddRange(todos_msgs);
+                        //    File.WriteAllLines(Program.pathConfig, combinedLines);
+                        //}
+
+                        for (int i = 0; i < todos_msgs.Count; i++)
+                        {
+                            string msg = todos_msgs[i];
+                            if (msg[2] == 's')
+                            {
+                                todos_msgs.Remove(msg);
+                                todos_msgs.Add(msg);
+                            }
+                        }
                         ultimos_msgs = todos_msgs.ToList();
-                        arduino.Open();
                         ProgressBar progressBar = new ProgressBar();
                         progressBar.cant_msgs = 0;
-                        progressBar.cant_msgs = todos_msgs.Length;
+                        progressBar.cant_msgs = todos_msgs.Count;
+                        progressBar.BackColor = panel_nom.BackColor;
                         progressBar.Show();
                         int num_mensaje = 0;
-                        foreach (string mensaje in todos_msgs)
-                        {
-                            bool distinto = false;
-                            if (result == DialogResult.Yes)
+                        string perfil = "p1";
+                        while (perfil != "p3"){
+                            arduino.Open();
+                            foreach (string mensaje in todos_msgs)
                             {
-                                arduino.WriteLine(mensaje + '\n');
+                                if (mensaje.StartsWith(perfil))
+                                {
+                                    if (mensaje[2] == ':')
+                                    {
+                                        bool distinto = false;
+                                        if (result == DialogResult.Yes)
+                                        {
+                                            arduino.WriteLine(mensaje + '\n');
+                                        }
+                                        else
+                                        {
+                                            if (mensaje != ultimos_msgs[num_mensaje])
+                                            {
+                                                arduino.WriteLine(mensaje + '\n');
+                                                distinto = true;
+                                            }
+                                        }
+                                        if (num_mensaje >= progressBar.onePercent * progressBar.progressBar_subiendo.Value)
+                                        {
+                                            progressBar.progressBar_subiendo.Value++;
+                                        }
+                                        num_mensaje++;
+                                        if (distinto || result == DialogResult.Yes)
+                                        {
+                                            Thread.Sleep(10);
+                                        }
+                                    }
+                                }
+
+                            }
+                            arduino.WriteLine("end");
+                            foreach (string mensaje in todos_msgs)
+                            {
+                                if (mensaje.StartsWith(perfil))
+                                {
+                                    if (mensaje[2] == 's')
+                                    {
+                                        arduino.WriteLine(mensaje + '\n');
+                                        Thread.Sleep(10);
+                                    }
+                                }
+                            }
+                            if (perfil == "p1")
+                            {
+                                perfil = "p2";
                             }
                             else
                             {
-                                if (mensaje != ultimos_msgs[num_mensaje])
-                                {
-                                    arduino.WriteLine(mensaje + '\n');
-                                    distinto = true;
-                                }
+                                break;
                             }
-                            if (num_mensaje >= progressBar.onePercent * progressBar.progressBar_subiendo.Value)
-                            {
-                                progressBar.progressBar_subiendo.Value++;
-                            }
-                            num_mensaje++;
-                            if (distinto || result == DialogResult.Yes)
-                            {
-                                Thread.Sleep(100);
-                            }
+                            arduino.Close();
+                            Thread.Sleep(1000);
                         }
                         progressBar.Close();
-                        arduino.WriteLine("end");
                         arduino.Close();
                         MessageBox.Show("Mensajes enviados exitosamente", "Enviado");
                     }

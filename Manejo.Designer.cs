@@ -146,7 +146,7 @@ namespace Proyecto_Final___Wingo
             // 
             // txt_nuevo_cant_paso
             // 
-            this.txt_nuevo_cant_paso.Location = new System.Drawing.Point(24, 168);
+            this.txt_nuevo_cant_paso.Location = new System.Drawing.Point(228, 57);
             this.txt_nuevo_cant_paso.Name = "txt_nuevo_cant_paso";
             this.txt_nuevo_cant_paso.Size = new System.Drawing.Size(100, 20);
             this.txt_nuevo_cant_paso.TabIndex = 17;
@@ -155,7 +155,7 @@ namespace Proyecto_Final___Wingo
             // 
             this.bt_enviar_nuevo_paso.BackgroundImage = global::Proyecto_Final___Wingo.Properties.Resources.bt_recor_2;
             this.bt_enviar_nuevo_paso.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bt_enviar_nuevo_paso.Location = new System.Drawing.Point(219, 66);
+            this.bt_enviar_nuevo_paso.Location = new System.Drawing.Point(148, 121);
             this.bt_enviar_nuevo_paso.Name = "bt_enviar_nuevo_paso";
             this.bt_enviar_nuevo_paso.Size = new System.Drawing.Size(168, 78);
             this.bt_enviar_nuevo_paso.TabIndex = 16;
@@ -166,7 +166,7 @@ namespace Proyecto_Final___Wingo
             // lbl_nuevo_cant_paso
             // 
             this.lbl_nuevo_cant_paso.AutoSize = true;
-            this.lbl_nuevo_cant_paso.Location = new System.Drawing.Point(21, 121);
+            this.lbl_nuevo_cant_paso.Location = new System.Drawing.Point(225, 18);
             this.lbl_nuevo_cant_paso.Name = "lbl_nuevo_cant_paso";
             this.lbl_nuevo_cant_paso.Size = new System.Drawing.Size(124, 13);
             this.lbl_nuevo_cant_paso.TabIndex = 1;
@@ -294,9 +294,9 @@ namespace Proyecto_Final___Wingo
             // 
             this.bt_cambiar_nombre.BackgroundImage = global::Proyecto_Final___Wingo.Properties.Resources.bt_recor_2;
             this.bt_cambiar_nombre.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bt_cambiar_nombre.Location = new System.Drawing.Point(19, 12);
+            this.bt_cambiar_nombre.Location = new System.Drawing.Point(22, 8);
             this.bt_cambiar_nombre.Name = "bt_cambiar_nombre";
-            this.bt_cambiar_nombre.Size = new System.Drawing.Size(137, 69);
+            this.bt_cambiar_nombre.Size = new System.Drawing.Size(156, 80);
             this.bt_cambiar_nombre.TabIndex = 0;
             this.bt_cambiar_nombre.Text = "Cambiar nombre del recorrido";
             this.bt_cambiar_nombre.UseVisualStyleBackColor = true;
@@ -471,9 +471,9 @@ namespace Proyecto_Final___Wingo
             this.bt_nuevo_paso.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.bt_nuevo_paso.IconSize = 42;
             this.bt_nuevo_paso.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bt_nuevo_paso.Location = new System.Drawing.Point(182, 14);
+            this.bt_nuevo_paso.Location = new System.Drawing.Point(203, 9);
             this.bt_nuevo_paso.Name = "bt_nuevo_paso";
-            this.bt_nuevo_paso.Size = new System.Drawing.Size(146, 69);
+            this.bt_nuevo_paso.Size = new System.Drawing.Size(158, 78);
             this.bt_nuevo_paso.TabIndex = 21;
             this.bt_nuevo_paso.Text = "Agregar Paso";
             this.bt_nuevo_paso.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -489,7 +489,7 @@ namespace Proyecto_Final___Wingo
             this.panel_modificar_paso.Controls.Add(this.lbl_nuevo_cant_paso);
             this.panel_modificar_paso.Location = new System.Drawing.Point(602, 204);
             this.panel_modificar_paso.Name = "panel_modificar_paso";
-            this.panel_modificar_paso.Size = new System.Drawing.Size(421, 210);
+            this.panel_modificar_paso.Size = new System.Drawing.Size(421, 214);
             this.panel_modificar_paso.TabIndex = 20;
             // 
             // panel_envio

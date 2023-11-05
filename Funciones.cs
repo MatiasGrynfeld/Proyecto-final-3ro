@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -12,7 +10,7 @@ namespace Proyecto_Final___Wingo
 {
     class Funciones
     {
-        public string string_a_enviar(string tipo_modalidad, int pers_perfil, int pers_angulo, string pers_modalidad, string delay, Color color, int fila, int columna, string man_tipo_paso, int man_cant_paso)
+        public string string_a_enviar(string tipo_modalidad, int pers_perfil, int pers_angulo, string pers_modalidad, string delay, Color color, int fila, int columna, string man_tipo_paso, int man_cant_paso, int cant_columnas)
         {
             string mensaje_final = null;
             string perf="0";
@@ -29,7 +27,15 @@ namespace Proyecto_Final___Wingo
             {
                 if (pers_modalidad == "independiente")
                 {
-                    int led_num = columna + fila * 8 + 64*pers_angulo;
+                    int led_num = columna + fila * cant_columnas;
+                    if (pers_angulo == 1)
+                    {
+                        led_num += 64;
+                    }
+                    else if (pers_angulo == 2)
+                    {
+                        led_num += 64 + 32;
+                    }
                     mensaje_final = $":{led_num}:{color.R}:{color.G}:{color.B}";
                 }
                 else

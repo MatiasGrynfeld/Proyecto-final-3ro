@@ -30,28 +30,19 @@ namespace Proyecto_Final___Wingo
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Pantalla_principal));
-            this.bt_cerrar_app = new System.Windows.Forms.Button();
             this.bt_ajustes = new System.Windows.Forms.Button();
             this.lbl_Sally = new System.Windows.Forms.Label();
             this.bt_ir_manejo = new FontAwesome.Sharp.IconButton();
             this.bt_ir_pers = new FontAwesome.Sharp.IconButton();
             this.SuspendLayout();
             // 
-            // bt_cerrar_app
-            // 
-            this.bt_cerrar_app.Location = new System.Drawing.Point(713, 404);
-            this.bt_cerrar_app.Name = "bt_cerrar_app";
-            this.bt_cerrar_app.Size = new System.Drawing.Size(75, 23);
-            this.bt_cerrar_app.TabIndex = 2;
-            this.bt_cerrar_app.Text = "Cerrar";
-            this.bt_cerrar_app.UseVisualStyleBackColor = true;
-            this.bt_cerrar_app.Click += new System.EventHandler(this.bt_cerrar_app_Click);
-            // 
             // bt_ajustes
             // 
-            this.bt_ajustes.Location = new System.Drawing.Point(685, 12);
+            this.bt_ajustes.BackgroundImage = global::Proyecto_Final___Wingo.Properties.Resources.bt_pantalla_principal;
+            this.bt_ajustes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bt_ajustes.Location = new System.Drawing.Point(637, 367);
             this.bt_ajustes.Name = "bt_ajustes";
-            this.bt_ajustes.Size = new System.Drawing.Size(103, 53);
+            this.bt_ajustes.Size = new System.Drawing.Size(151, 71);
             this.bt_ajustes.TabIndex = 3;
             this.bt_ajustes.Text = "Configuraciones";
             this.bt_ajustes.UseVisualStyleBackColor = true;
@@ -69,12 +60,14 @@ namespace Proyecto_Final___Wingo
             // 
             // bt_ir_manejo
             // 
+            this.bt_ir_manejo.BackgroundImage = global::Proyecto_Final___Wingo.Properties.Resources.bt_pantalla_principal;
+            this.bt_ir_manejo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bt_ir_manejo.IconChar = FontAwesome.Sharp.IconChar.TruckArrowRight;
             this.bt_ir_manejo.IconColor = System.Drawing.Color.Black;
             this.bt_ir_manejo.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.bt_ir_manejo.Location = new System.Drawing.Point(319, 195);
+            this.bt_ir_manejo.Location = new System.Drawing.Point(301, 195);
             this.bt_ir_manejo.Name = "bt_ir_manejo";
-            this.bt_ir_manejo.Size = new System.Drawing.Size(163, 61);
+            this.bt_ir_manejo.Size = new System.Drawing.Size(214, 116);
             this.bt_ir_manejo.TabIndex = 5;
             this.bt_ir_manejo.Text = "Ir a Manejo";
             this.bt_ir_manejo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -84,12 +77,14 @@ namespace Proyecto_Final___Wingo
             // 
             // bt_ir_pers
             // 
+            this.bt_ir_pers.BackgroundImage = global::Proyecto_Final___Wingo.Properties.Resources.bt_pantalla_principal;
+            this.bt_ir_pers.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bt_ir_pers.IconChar = FontAwesome.Sharp.IconChar.CarOn;
             this.bt_ir_pers.IconColor = System.Drawing.Color.Black;
             this.bt_ir_pers.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.bt_ir_pers.Location = new System.Drawing.Point(319, 95);
+            this.bt_ir_pers.Location = new System.Drawing.Point(301, 73);
             this.bt_ir_pers.Name = "bt_ir_pers";
-            this.bt_ir_pers.Size = new System.Drawing.Size(163, 61);
+            this.bt_ir_pers.Size = new System.Drawing.Size(214, 116);
             this.bt_ir_pers.TabIndex = 6;
             this.bt_ir_pers.Text = "Ir a Personalización";
             this.bt_ir_pers.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -108,10 +103,9 @@ namespace Proyecto_Final___Wingo
             this.Controls.Add(this.bt_ir_manejo);
             this.Controls.Add(this.lbl_Sally);
             this.Controls.Add(this.bt_ajustes);
-            this.Controls.Add(this.bt_cerrar_app);
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Pantalla_principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -123,7 +117,6 @@ namespace Proyecto_Final___Wingo
         }
 
         #endregion
-        private System.Windows.Forms.Button bt_cerrar_app;
         private System.Windows.Forms.Button bt_ajustes;
         private System.Windows.Forms.Label lbl_Sally;
         private FontAwesome.Sharp.IconButton bt_ir_manejo;

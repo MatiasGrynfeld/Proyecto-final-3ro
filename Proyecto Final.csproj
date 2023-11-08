@@ -230,6 +230,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="config.txt" />
+    <None Include="Resources\bt pantalla principal.png" />
     <None Include="Resources\bt pers.png" />
     <None Include="Resources\fondo personalización 2.png" />
     <None Include="Resources\Fondo personalización.png" />

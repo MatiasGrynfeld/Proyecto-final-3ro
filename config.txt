@@ -1,4 +1,4 @@
-COM9
+COM8
 Personalización_perf1{
 Hola
 Independiente
@@ -21,12 +21,12 @@ Independiente
 
 Recorrido 1{
 Hola
-GD 56-Avanzar 13-GI 9-Avanzar 10
+GD 56-Avanzar 1-GI 9-Avanzar 2
 }
 
 Recorrido 2{
-
-
+jlhgb
+Avanzar 1
 }
 
 Recorrido 3{
@@ -68,3 +68,4 @@ Recorrido 3{
 
 
 }
+

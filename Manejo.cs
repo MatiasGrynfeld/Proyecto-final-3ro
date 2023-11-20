@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Ports;
 using System.Threading;
+using System.IO;
 
 namespace Proyecto_Final___Wingo
 {
@@ -653,9 +654,6 @@ namespace Proyecto_Final___Wingo
         }
 
         //Enviar
-
-        List<string> ultimos_msgs = new List<string>();
-
         private void bt_enviar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txt_delay_carga.Text))
@@ -697,51 +695,27 @@ namespace Proyecto_Final___Wingo
                 {
                     SerialPort arduino = new SerialPort();
                     arduino.PortName = funciones.leer_datos(1);
-                    arduino.BaudRate = 115200;
+                    arduino.BaudRate = 2000000;
                     arduino.Parity = Parity.None;
                     try
                     {
-                        DialogResult result = MessageBox.Show("¿Desea enviar todos los recorridos desde cero? NOTA: puede tardar más tiempo", "Enviando", MessageBoxButtons.YesNoCancel);
-                        if (result != DialogResult.Cancel)
+                        //{
+                        //    string[] a = File.ReadAllLines(Program.pathConfig);
+                        //    List<string> combinedLines = a.ToList();
+                        //    mensajes.Insert(0, $"m:{mensajes.Count}:{Convert.ToInt16(txt_delay_carga.Text) * 1000}" + '\n');
+                        //    combinedLines.AddRange(mensajes);
+                        //    File.WriteAllLines(Program.pathConfig, combinedLines);
+                        //}
+                        string mensaje_total = $"m{mensajes.Count}:{Convert.ToInt16(txt_delay_carga.Text) * 1000}:";
+                        foreach (string mensaje in mensajes)
                         {
-                            ultimos_msgs = mensajes;
-                            arduino.Open();
-                            ProgressBar progressBar = new ProgressBar();
-                            progressBar.cant_msgs = 0;
-                            progressBar.cant_msgs = mensajes.Count;
-                            progressBar.BackColor = Color.FromArgb(190,21,3);
-                            progressBar.Show();
-                            int num_mensaje = 0;
-                            arduino.WriteLine($"m:{mensajes.Count}:{Convert.ToInt16(txt_delay_carga.Text)*1000}" + '\n');
-                            foreach (string mensaje in mensajes)
-                            {
-                                bool distinto = false;
-                                if (result == DialogResult.Yes)
-                                {
-                                    arduino.WriteLine(mensaje + '\n');
-                                }
-                                else
-                                {
-                                    if (mensaje != ultimos_msgs[num_mensaje])
-                                    {
-                                        arduino.WriteLine(mensaje + '\n');
-                                        distinto = true;
-                                    }
-                                }
-                                if (num_mensaje >= progressBar.onePercent * progressBar.progressBar_subiendo.Value)
-                                {
-                                    progressBar.progressBar_subiendo.Value++;
-                                }
-                                num_mensaje++;
-                                if (distinto || result == DialogResult.Yes)
-                                {
-                                    Thread.Sleep(200);
-                                }
-                            }
-                            progressBar.Close();
-                            arduino.Close();
-                            MessageBox.Show("Mensajes enviados exitosamente, el recorrido debería estarse ejecutando", "Enviado");
+                            mensaje_total+= mensaje + ":";
                         }
+                        arduino.Open();
+                        Thread.Sleep(1000);
+                        arduino.WriteLine(mensaje_total);
+                        arduino.Close();
+                        MessageBox.Show("Mensajes enviados exitosamente, el recorrido se va a ejecutar", "Enviado");
                     }
                     catch
                     {
@@ -750,7 +724,7 @@ namespace Proyecto_Final___Wingo
                     }
                 }
                 else
-                {
+                {11
                     MessageBox.Show("Error al seleccionar el puerto del auto. Vaya a configuración y seleccionar el puerto correcto.", "Error");
                 }
             }

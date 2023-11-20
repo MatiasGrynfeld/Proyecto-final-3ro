@@ -724,7 +724,7 @@ namespace Proyecto_Final___Wingo
                     }
                 }
                 else
-                {11
+                {
                     MessageBox.Show("Error al seleccionar el puerto del auto. Vaya a configuración y seleccionar el puerto correcto.", "Error");
                 }
             }

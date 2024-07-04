@@ -1232,22 +1232,6 @@ namespace Proyecto_Final___Wingo
                     if (result != DialogResult.Cancel)
                     {
                         List<string> todos_msgs = msgs_angulo_arr1.Concat(msgs_angulo_arr2).Concat(msgs_angulo_izq1).Concat(msgs_angulo_izq2).Concat(msgs_angulo_der1).Concat(msgs_angulo_der2).ToList();
-                        //{
-                        //    string[] a = File.ReadAllLines(Program.pathConfig);
-                        //    List<string> combinedLines = a.ToList();
-                        //    combinedLines.AddRange(todos_msgs);
-                        //    File.WriteAllLines(Program.pathConfig, combinedLines);
-                        //}
-
-                        for (int i = 0; i < todos_msgs.Count; i++)
-                        {
-                            string msg = todos_msgs[i];
-                            if (msg[2] == 's')
-                            {
-                                todos_msgs.Remove(msg);
-                                todos_msgs.Add(msg);
-                            }
-                        }
                         ultimos_msgs = todos_msgs.ToList();
                         ProgressBar progressBar = new ProgressBar();
                         progressBar.cant_msgs = 0;
